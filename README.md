@@ -369,4 +369,3 @@ Issues and pull requests are welcome! Please open an issue to discuss major chan
 - **Dataset:** [Zenodo](https://doi.org/10.5281/zenodo.17779317)
 - **SPARQL Endpoint:** http://sidekick.bio2vec.net/sparql
 - **Website:** http://sidekick.bio2vec.net/
-```
