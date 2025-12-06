@@ -42,7 +42,8 @@ pip install rdflib pandas numpy scikit-learn matplotlib seaborn tqdm pyshex pron
 - `side_effects_mapped.csv` - Side effects with HPO mappings (~184K rows) [Download](https://drive.google.com/file/d/11KRfE4AALyRFa7dFwUVwunHlQTKLASRG/view?usp=drive_link)
 - `hp.obo` - HPO ontology (for semantic similarity and reasoning) [Download](https://hpo.jax.org/data/ontology)
 - `mondo.obo` - MONDO ontology (for disease reasoning) [Download](https://mondo.monarchinitiative.org/pages/download/)
-- `sidekick_validation.shex` - ShEx schema for validation 
+- `sidekick_validation.shex` - ShEx schema for validation
+- `full_database.xml` - Drugbank XML file, see below for details on how to download. 
 
 ### Option 1: Use Pre-built Files from Zenodo
 
