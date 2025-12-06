@@ -206,26 +206,6 @@ results/competency_questions/
     └── cq8_federated_heart.csv   # Only if --run-federated
 ```
 
-### Expected Results
-
-You should see results matching Table 3 in the paper:
-
-| Competency Question | Expected Results | Reasoning Type |
-|---------------------|------------------|----------------|
-| CQ1: Cardiac Side Effects | ~1,900 drugs | Anatomical Hierarchy |
-| CQ2: Nervous System | ~1,900 drugs | Hierarchical Subsumption |
-| CQ3: Renal Contraindications | ~180 drugs | Cross-System Safety |
-| CQ4: Cardiac Rhythm | ~1,200 drugs | Physiological Grouping |
-| CQ5: Metabolic Effects | ~1,900 drugs | Multi-level Hierarchy |
-| CQ6: Infectious Diseases | ~430 drugs | Disease Taxonomy |
-| CQ7: Cardiac-Safe Drugs | 50 drugs (limited) | Combined Reasoning |
-| CQ8: Heart Anatomy (Federated) | ~500 drugs, 40 structures | Federated Axiomatic |
-
-### Runtime
-- **Without ontology loading**: 2-5 minutes
-- **With ontology loading**: 10-20 minutes (first time)
-- **With federated query**: +30-60 seconds (CQ8 only)
-
 ### Notes
 - If `pronto` is not installed, ontology loading will be skipped (queries may return fewer results)
 - CQ8 (federated) queries Ubergraph - it's optional
