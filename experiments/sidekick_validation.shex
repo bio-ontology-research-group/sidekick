@@ -1,0 +1,160 @@
+BASE <http://sidekick.bio2vec.net/>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX sk: <http://sidekick.bio2vec.net/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX rxnorm: <http://purl.bioontology.org/ontology/RXNORM/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# ============================================================================
+# SIDEKICK DRUG KNOWLEDGE GRAPH - ShEx VALIDATION SCHEMA
+# Version: 1.1 (Fixed with BASE URI)
+# ============================================================================
+
+# ============================================================================
+# CORE ENTITY SHAPES
+# ============================================================================
+
+# Active Ingredient (Individual drug ingredient from RxNorm)
+<ActiveIngredientShape> {
+  a [ sio:SIO_010077 ]
+}
+
+# Drug Collection (Hub) - Represents a unique set of active ingredients
+<DrugCollectionShape> {
+  a [ sk:DrugCollection ] ;
+  sio:SIO_000059 @<ActiveIngredientShape> + ;
+  rdfs:label xsd:string
+}
+
+# Pharmaceutical Product (Spoke) - Brand/formulation level drug
+<PharmaceuticalProductShape> {
+  a [ sio:SIO_010039 ] ;
+  sio:SIO_000028 @<DrugCollectionShape> {1} ;
+  sio:SIO_000253 @<SPLDocumentShape> + ;
+  rdfs:label xsd:string
+}
+
+# Disease or Phenotype Entity (from MONDO or HPO)
+<DiseaseOrPhenotypeShape> {
+  a [ sk:DiseaseOrPhenotype ] ;
+  rdfs:label xsd:string ?
+}
+
+# SPL Document (FDA Structured Product Label)
+<SPLDocumentShape> {
+  a [ sio:SIO_000148 ] ;
+  sk:setId xsd:string ;
+  sk:version xsd:integer ? ;
+  rdfs:seeAlso IRI
+}
+
+# ============================================================================
+# ASSOCIATION SHAPES (7 Types)
+# ============================================================================
+
+# Type 1: Side Effect Association
+<SideEffectShape> {
+  a [ sio:SIO_000897 ] ;
+  a [ sk:SideEffect ] ;
+  sk:refersToDrug @<DrugCollectionShape> {1} ;
+  sk:hasSideEffect IRI /^http:\/\/purl\.obolibrary\.org\/obo\/HP_[0-9]{7}$/ {1} ;
+  sio:SIO_000253 @<SPLDocumentShape> + ;
+  rdfs:label xsd:string ;
+  dcterms:description xsd:string ?
+}
+
+# Type 2: Disease Indication Association
+<DiseaseIndicationShape> {
+  a [ sio:SIO_000897 ] ;
+  a [ sk:DiseaseIndication ] ;
+  sk:refersToDrug @<DrugCollectionShape> {1} ;
+  sk:isIndicatedForDisease IRI /^http:\/\/purl\.obolibrary\.org\/obo\/MONDO_[0-9]{7}$/ {1} ;
+  sio:SIO_000253 @<SPLDocumentShape> + ;
+  rdfs:label xsd:string ;
+  dcterms:description xsd:string ?
+}
+
+# Type 3: Phenotype Indication Association
+<PhenotypeIndicationShape> {
+  a [ sio:SIO_000897 ] ;
+  a [ sk:PhenotypeIndication ] ;
+  sk:refersToDrug @<DrugCollectionShape> {1} ;
+  sk:isIndicatedForPhenotype IRI /^http:\/\/purl\.obolibrary\.org\/obo\/HP_[0-9]{7}$/ {1} ;
+  sio:SIO_000253 @<SPLDocumentShape> + ;
+  rdfs:label xsd:string ;
+  dcterms:description xsd:string ?
+}
+
+# Type 4: Drug Indication Association (Drug-Drug)
+<DrugIndicationShape> {
+  a [ sio:SIO_000897 ] ;
+  a [ sk:DrugIndication ] ;
+  sk:refersToDrug @<DrugCollectionShape> {1} ;
+  sk:isIndicatedWithDrug @<DrugCollectionShape> {1} ;
+  sio:SIO_000253 @<SPLDocumentShape> + ;
+  rdfs:label xsd:string ;
+  dcterms:description xsd:string ?
+}
+
+# Type 5: Disease Contraindication Association
+<DiseaseContraindicationShape> {
+  a [ sio:SIO_000897 ] ;
+  a [ sk:DiseaseContraindication ] ;
+  sk:refersToDrug @<DrugCollectionShape> {1} ;
+  sk:isContraindicatedInDisease IRI /^http:\/\/purl\.obolibrary\.org\/obo\/MONDO_[0-9]{7}$/ {1} ;
+  sio:SIO_000253 @<SPLDocumentShape> + ;
+  rdfs:label xsd:string ;
+  dcterms:description xsd:string ?
+}
+
+# Type 6: Phenotype Contraindication Association
+<PhenotypeContraindicationShape> {
+  a [ sio:SIO_000897 ] ;
+  a [ sk:PhenotypeContraindication ] ;
+  sk:refersToDrug @<DrugCollectionShape> {1} ;
+  sk:isContraindicatedInPhenotype IRI /^http:\/\/purl\.obolibrary\.org\/obo\/HP_[0-9]{7}$/ {1} ;
+  sio:SIO_000253 @<SPLDocumentShape> + ;
+  rdfs:label xsd:string ;
+  dcterms:description xsd:string ?
+}
+
+# Type 7: Drug Contraindication Association (Drug-Drug)
+<DrugContraindicationShape> {
+  a [ sio:SIO_000897 ] ;
+  a [ sk:DrugContraindication ] ;
+  sk:refersToDrug @<DrugCollectionShape> {1} ;
+  sk:isContraindicatedWithDrug @<DrugCollectionShape> {1} ;
+  sio:SIO_000253 @<SPLDocumentShape> + ;
+  rdfs:label xsd:string ;
+  dcterms:description xsd:string ?
+}
+
+# ============================================================================
+# UNION SHAPE FOR ALL ASSOCIATIONS
+# ============================================================================
+<ClinicalAssociationShape> 
+  @<SideEffectShape> OR 
+  @<DiseaseIndicationShape> OR 
+  @<PhenotypeIndicationShape> OR 
+  @<DrugIndicationShape> OR 
+  @<DiseaseContraindicationShape> OR 
+  @<PhenotypeContraindicationShape> OR 
+  @<DrugContraindicationShape>
+
+# ============================================================================
+# ONTOLOGY METADATA SHAPE
+# ============================================================================
+<OntologyShape> {
+  a [ owl:Ontology ] ;
+  rdfs:label xsd:string ;
+  dcterms:description xsd:string ;
+  owl:imports IRI + ;
+  owl:versionInfo xsd:string ? ;
+  dcterms:created xsd:dateTime ;
+  dcterms:creator xsd:string + ;
+  dcterms:license IRI
+}
