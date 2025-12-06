@@ -218,15 +218,15 @@ def run_competency_query(g, query_name, query_sparql, explanation,
             print()
             
             print(f"⏱️  Query execution time: {elapsed:.3f} seconds")
-            print(f"✅ Query Status: SUCCESS")
+            print(f" Query Status: SUCCESS")
             
             # Save results if requested
             if save_results:
                 save_query_results(results, save_results, headers)
             
         else:
-            print("❌ No results found.")
-            print(f"✅ Query Status: EXECUTED (no matches)")
+            print(" No results found.")
+            print(f" Query Status: EXECUTED (no matches)")
             full_results = []
         
         print()
@@ -240,7 +240,7 @@ def run_competency_query(g, query_name, query_sparql, explanation,
         }
         
     except Exception as e:
-        print(f"❌ Query Error: {e}")
+        print(f" Query Error: {e}")
         import traceback
         traceback.print_exc()
         return {
@@ -282,7 +282,7 @@ def save_query_results(results, filepath, headers):
     
     df = pd.DataFrame(data)
     df.to_csv(filepath, index=False)
-    print(f"💾 Results saved to: {filepath}")
+    print(f" Results saved to: {filepath}")
 
 
 # ============================================================================
@@ -559,7 +559,7 @@ def generate_competency_report(results_dict, output_dir):
     for cq_name, result in results_dict.items():
         summary_data.append([
             cq_name,
-            "✅ Yes" if result['success'] else "❌ No",
+            " Yes" if result['success'] else " No",
             result.get('total_results', 0),
             f"{result.get('execution_time', 0):.3f}s" if result['success'] else "N/A"
         ])
@@ -695,7 +695,7 @@ def main(args):
             save_results=os.path.join(results_dir, 'cq8_federated_heart.csv')
         )
     else:
-        print("\n⏩ Skipping federated query (use --run-federated to enable)")
+        print("\n Skipping federated query (use --run-federated to enable)")
     
     # Step 4: Generate summary report
     generate_competency_report(results, args.output_dir)
