@@ -11,7 +11,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 # ============================================================================
 # SIDEKICK DRUG KNOWLEDGE GRAPH - ShEx VALIDATION SCHEMA
-# Version: 1.1 (Fixed with BASE URI)
+# Version: 1.0 (Fixed with BASE URI)
 # ============================================================================
 
 # ============================================================================
