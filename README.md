@@ -4,7 +4,8 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17779317.svg)](https://doi.org/10.5281/zenodo.17779317)
 
-SIDEKICK is a knowledge graph of drug safety information (side effects, indications, contraindications) extracted from FDA Structured Product Labels and mapped to standardized biomedical ontologies (HPO, MONDO, RxNorm).
+SIDEKICK is a knowledge graph of drug safety information (side effects, indications, contraindications) extracted from FDA Structured Product Labels and mapped to standardized biomedical ontologies (HPO, MONDO, RxNorm). The figure below illustrates the workflow for creating the SIDEKICK knowledge graph.
+<img width="2814" height="1461" alt="image" src="https://github.com/user-attachments/assets/0f58d872-7ccc-4b6f-91b9-9d0969538c8f" />
 
 ## 📄 Publication
 
