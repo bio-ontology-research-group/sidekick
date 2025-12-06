@@ -1,0 +1,93 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variables
+.env
+.venv
+*.env
+
+# API Keys
+*api_key*
+*API_KEY*
+config.json
+secrets.json
+
+# Data files (large)
+data/spls/
+data/raw_text/
+data/extracted/
+data/mapped/
+*.xml
+*.zip
+*.gz
+*.tar
+*.txt
+!requirements.txt
+!data/README.md
+!data/.gitkeep
+
+# DailyMed archives
+dm_spl_release_human_rx_part*.zip
+rxnorm_mappings.txt
+
+# Ontology files
+*.obo
+*.owl
+
+# Generated files
+*.csv
+!.gitkeep
+*.pkl
+*.json
+!CITATION.cff
+
+# Output files
+*.ttl
+Sidekick_v*.ttl
+
+# Cache
+.cache/
+*.cache
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Progress files
+*_progress.txt
