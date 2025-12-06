@@ -81,7 +81,7 @@ def load_sidekick_graph(filename):
     g.parse(filename, format='turtle')
     elapsed = time.time() - start_time
     
-    print(f"✓ Loaded {len(g):,} triples in {elapsed:.2f} seconds")
+    print(f" Loaded {len(g):,} triples in {elapsed:.2f} seconds")
     
     return g
 
@@ -136,7 +136,7 @@ def validate_shape(g, shex_file, shape_name, node_type, description,
     total_nodes = len(nodes)
     
     if total_nodes == 0:
-        print(f"⚠️  No nodes found of type {node_type}")
+        print(f"  No nodes found of type {node_type}")
         return {
             'shape_name': shape_name,
             'description': description,
@@ -148,7 +148,7 @@ def validate_shape(g, shex_file, shape_name, node_type, description,
             'errors': []
         }
     
-    print(f"✓ Found {total_nodes:,} nodes")
+    print(f" Found {total_nodes:,} nodes")
     
     # Determine sample size
     if sample_size is None or sample_size > total_nodes:
@@ -205,8 +205,8 @@ def validate_shape(g, shex_file, shape_name, node_type, description,
     print(f"\nValidation Results:")
     print(f"  Total nodes in graph: {total_nodes:,}")
     print(f"  Nodes validated: {sample_size:,}")
-    print(f"  ✓ Passed: {passed:,} ({100*passed/sample_size:.1f}%)")
-    print(f"  ✗ Failed: {failed:,} ({100*failed/sample_size:.1f}%)")
+    print(f"   Passed: {passed:,} ({100*passed/sample_size:.1f}%)")
+    print(f"   Failed: {failed:,} ({100*failed/sample_size:.1f}%)")
     print(f"  Time: {elapsed:.2f}s ({sample_size/elapsed:.0f} nodes/sec)")
     
     # Show sample errors
@@ -221,10 +221,10 @@ def validate_shape(g, shex_file, shape_name, node_type, description,
     # Determine overall status
     if failed == 0:
         status = "PASSED"
-        print(f"\n✅ VALIDATION PASSED")
+        print(f"\n VALIDATION PASSED")
     else:
         status = "FAILED"
-        print(f"\n❌ VALIDATION FAILED")
+        print(f"\n VALIDATION FAILED")
     
     return {
         'shape_name': shape_name,
@@ -255,10 +255,10 @@ def print_validation_summary(results):
     summary_data = []
     for result in results:
         status_symbol = {
-            'PASSED': '✅',
-            'FAILED': '❌',
-            'NO_NODES': '⚠️'
-        }.get(result['status'], '❓')
+            'PASSED': '',
+            'FAILED': '',
+            'NO_NODES': ''
+        }.get(result['status'], '')
         
         summary_data.append([
             status_symbol,
@@ -295,14 +295,14 @@ def print_validation_summary(results):
     no_node_shapes = sum(1 for r in results if r['status'] == 'NO_NODES')
     
     print(f"\nShape Validation:")
-    print(f"  ✅ Passed shapes: {passed_shapes}/{len(results)}")
-    print(f"  ❌ Failed shapes: {failed_shapes}/{len(results)}")
-    print(f"  ⚠️  Shapes with no nodes: {no_node_shapes}/{len(results)}")
+    print(f"   Passed shapes: {passed_shapes}/{len(results)}")
+    print(f"   Failed shapes: {failed_shapes}/{len(results)}")
+    print(f"    Shapes with no nodes: {no_node_shapes}/{len(results)}")
     
     if failed_shapes == 0 and no_node_shapes == 0:
-        print(f"\n🎉 ALL VALIDATIONS PASSED! SIDEKICK is fully compliant with the schema.")
+        print(f"\n ALL VALIDATIONS PASSED! SIDEKICK is fully compliant with the schema.")
     elif failed_shapes > 0:
-        print(f"\n⚠️  Some validations failed. Review errors above for details.")
+        print(f"\n  Some validations failed. Review errors above for details.")
 
 
 def save_validation_results(results, output_dir):
@@ -406,7 +406,7 @@ def main(args):
         print(f"\n⚠️  {failed_shapes} shape(s) failed validation")
         return 1
     else:
-        print(f"\n✅ All shapes passed validation")
+        print(f"\n All shapes passed validation")
         return 0
 
 
