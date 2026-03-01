@@ -42,7 +42,7 @@ Download the ready-to-use RDF knowledge graph from Zenodo:
 wget https://zenodo.org/record/17779317/files/Sidekick_v1.ttl
 ```
 
-Query with SPARQL or load into a triplestore.
+Query with SPARQL or load into a triplestore. You may also access the raw csv files at the following [link](https://drive.google.com/drive/folders/18yubbQsGAH6KtKIXiHD3buVgPNHGBvlC?usp=sharing)
 
 ### Option 2: Reproduce from Scratch
 
