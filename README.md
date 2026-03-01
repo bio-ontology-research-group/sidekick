@@ -42,7 +42,7 @@ Download the ready-to-use RDF knowledge graph from Zenodo:
 wget https://zenodo.org/record/17779317/files/Sidekick_v1.ttl
 ```
 
-Query with SPARQL or load into a triplestore. You may also access the raw csv files at the following [link](https://drive.google.com/drive/folders/18yubbQsGAH6KtKIXiHD3buVgPNHGBvlC?usp=sharing)
+Query with SPARQL or load into a triplestore. You may also access the raw CSV files at the following [link](https://drive.google.com/drive/folders/18yubbQsGAH6KtKIXiHD3buVgPNHGBvlC?usp=sharing). The CSV files also include the unmapped terms (mapped to HP:0000001 or MONDO:0000001) that were excluded from the KG construction.
 
 ### Option 2: Reproduce from Scratch
 
