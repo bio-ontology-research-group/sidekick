@@ -31,7 +31,7 @@ SIDEKICK is a knowledge graph of drug safety information (side effects, indicati
   interoperability. Consequently, SIDEKICK enables automated safety
   surveillance and phenotype-based similarity analysis for drug repurposing.
 
-[Paper Link] | [Zenodo Dataset](https://doi.org/10.5281/zenodo.17779317)
+[Paper Link](https://arxiv.org/abs/2602.19183v1) | [Zenodo Dataset](https://doi.org/10.5281/zenodo.17779317)
 
 ## 🚀 Quick Start
 
